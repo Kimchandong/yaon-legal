@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>YAON 친구 초대</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .code { font: 700 40px/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; letter-spacing: 4px; margin: 16px 0; word-break: break-all; }
+  .btn { display: inline-block; padding: 14px 28px; border-radius: 28px; border: 1.5px solid var(--gold); color: var(--fg); text-decoration: none; font-weight: 700; }
+  .muted { color: var(--muted); font-size: 15px; }
+  main { text-align: center; padding-top: 24px; }
+</style>
+</head>
+<body>
+<!-- #27-A 친구 초대 링크: yaon:// 로 앱 열기 시도 + 코드 크게 표시 + 앱 설치 안내. 코드는 24시간·1번만 (확인은 앱·서버가 함) -->
+<main>
+<h1>YAON</h1>
+<p id="title"></p>
+<div class="code" id="code"></div>
+<p><a class="btn" id="open" href="#"></a></p>
+<p class="muted" id="how"></p>
+<p class="muted" id="note"></p>
+</main>
+<footer>YAON · <a href="mailto:yaon.support@gmail.com">yaon.support@gmail.com</a></footer>
+<script>
+(function () {
+  var T = {
+    ko: ['친구가 YAON에 초대했어요', '앱에서 열기', '앱이 열리지 않으면 YAON을 설치한 뒤 MY → QR → [친구 코드 입력]에 위 코드를 넣어 주세요.', '코드는 24시간 동안 한 번만 쓸 수 있어요.', '초대 코드가 없거나 올바르지 않아요.'],
+    en: ['A friend invited you to YAON', 'Open in the app', "If the app doesn't open, install YAON, then enter the code above in MY → QR → [Enter friend code].", 'The code can be used once within 24 hours.', 'The invite code is missing or invalid.'],
+    vi: ['Một người bạn đã mời bạn dùng YAON', 'Mở trong ứng dụng', 'Nếu ứng dụng không mở, hãy cài YAON rồi nhập mã ở trên tại MY → QR → [Nhập mã bạn bè].', 'Mã chỉ dùng được một lần trong 24 giờ.', 'Mã mời không có hoặc không hợp lệ.'],
+    th: ['เพื่อนชวนคุณมาใช้ YAON', 'เปิดในแอป', 'ถ้าแอปไม่เปิด ให้ติดตั้ง YAON แล้วใส่รหัสด้านบนที่ MY → QR → [ใส่รหัสเพื่อน]', 'รหัสใช้ได้ครั้งเดียวภายใน 24 ชั่วโมง', 'ไม่มีรหัสเชิญหรือรหัสไม่ถูกต้อง'],
+    ja: ['友達からYAONに招待されました', 'アプリで開く', 'アプリが開かない場合は、YAONをインストールしてから MY → QR → [友達コード入力] に上のコードを入れてください。', 'コードは24時間以内に1回だけ使えます。', '招待コードがないか、正しくありません。']
+  };
+  var lang = (navigator.language || 'ko').slice(0, 2).toLowerCase();
+  var s = T[lang] || T.en;
+  document.documentElement.lang = T[lang] ? lang : 'en';
+  var raw = new URLSearchParams(location.search).get('c') || '';
+  var v = raw.toUpperCase().replace(/[^A-Z0-9]/g, '');
+  var ok = v.length === 8;
+  var code = ok ? v.slice(0, 4) + '-' + v.slice(4) : '';
+  document.getElementById('title').textContent = ok ? s[0] : s[4];
+  document.getElementById('code').textContent = code;
+  var open = document.getElementById('open');
+  open.textContent = s[1];
+  if (ok) {
+    var url = 'yaon://friend?c=' + encodeURIComponent(code);
+    open.href = url;
+    document.getElementById('how').textContent = s[2];
+    document.getElementById('note').textContent = s[3];
+    setTimeout(function () { location.href = url; }, 300);
+  } else {
+    open.style.display = 'none';
+  }
+})();
+</script>
+</body>
+</html>
