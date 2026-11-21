@@ -16,47 +16,56 @@
 <tr><td>Date-of-birth verification result (whether aged 19 or older, and time of verification)</td><td>Adult verification</td><td>Until account deletion</td></tr>
 <tr><td>Time of consent to the Terms, app language and time zone, notification and marketing consent settings</td><td>Provision of the Service, legally required consent records</td><td>Until account deletion</td></tr>
 <tr><td>Precise location (only while the app is in use)</td><td>Finding nearby venues, calculating delivery fees, invitations from nearby businesses</td><td>Locations of nearby requests are deleted after <strong>24 hours</strong></td></tr>
-<tr><td>AI chat input (search queries)</td><td>Finding venues, improving the Service</td><td><strong>90 days</strong></td></tr>
+<tr><td>AI chat input (search queries)</td><td>Finding venues, improving the Service (learning frequent questions)</td><td><strong>90 days</strong>. For question learning, only sentences with personal information (phone numbers, emails, names, etc.) removed are stored without identifying the account; lines that are not question candidates are deleted after 90 days</td></tr>
 <tr><td>Request messages sent to nearby businesses</td><td>Invitations from nearby businesses, business statistics</td><td><strong>90 days</strong></td></tr>
-<tr><td>One-on-one consultation and private conversation messages</td><td>Consultations with businesses</td><td><strong>24 hours</strong> after the last message (if there are no new messages, the entire chat room is deleted; consultation rooms with reservations or deliveries are retained together with the order records)</td></tr>
+<tr><td>One-on-one consultation and private conversation messages</td><td>Consultations with businesses</td><td><strong>24 hours (nightlife) · 7 days (restaurants)</strong> after the last message (if there is no new message, the entire chat room is deleted; consultation rooms with reservations or deliveries and saved chats are kept with the records)</td></tr>
 <tr><td>Consultation photos</td><td>Consultations with businesses</td><td><strong>24 hours</strong> after sending</td></tr>
+<tr><td>One-on-one chats between friends</td><td>Chatting with friends</td><td>Not automatically deleted; <strong>deleted when the account is deleted</strong></td></tr>
+<tr><td>Group chat messages and photos</td><td>Group chats</td><td><strong>30 days</strong> per message</td></tr>
+<tr><td>Business event posts and photos</td><td>Nearby event notifications</td><td>Events with a push notification are deleted <strong>24 hours</strong> after the first push; others are kept until the event ends</td></tr>
+<tr><td>Business card, menu and signboard photos (for recognition)</td><td>Reading business information</td><td><strong>Not stored on the server</strong> (discarded after reading). Photos taken with the in-app camera are stored only on the phone</td></tr>
+<tr><td>Voice input</td><td>Speaking to type</td><td>The phone's speech recognition (Google) converts speech to text and <strong>only the text</strong> is sent; audio is not sent to the operator</td></tr>
+<tr><td>Business manager and new business application records (including cancelled and rejected)</td><td>Reviewing applications, preventing duplicates</td><td>Until the account is deleted</td></tr>
 <tr><td>Reviews, photos, video links</td><td>Publishing reviews</td><td>Until account deletion or removal</td></tr>
+<tr><td>Business and menu photos (uploaded by owners and staff)</td><td>Showing the business page</td><td>Until the business deletes them or the business listing is removed</td></tr>
 <tr><td>QR visit and reward records</td><td>Visit rewards</td><td>Until account deletion</td></tr>
 <tr><td>Reservation no-show records (reservation outcomes processed by businesses)</td><td>Processing reservations, providing the <strong>no-show count (last 6 months)</strong> to the reserved venue</td><td>Retained together with reservation records (venues see only the count for the last 6 months)</td></tr>
 <tr><td>Delivery address and requests, reservation contact details and requests</td><td>Processing orders and reservations</td><td>Retained together with order and reservation records; <strong>addresses and contact details are deleted upon account deletion</strong> (only amounts and dates remain)</td></tr>
 <tr><td>Personal mobile phone numbers of business owners and staff</td><td>Verifying management applications, contact</td><td>Until account deletion or termination of management rights</td></tr>
 <tr><td>Push notification tokens</td><td>Sending notifications</td><td>Deleted upon logout or account deletion</td></tr>
 <tr><td>Raw business impression and visit statistics</td><td>Business statistics</td><td><strong>1 year</strong></td></tr>
-<tr><td>Report details (including a copy of the conversation as of the time of the report)</td><td>Handling reports</td><td><strong>1 year</strong> after handling</td></tr>
+<tr><td>Report details (including a copy of the conversation as of the time of the report. For a report on an AI answer, that answer and the question just before it)</td><td>Handling reports</td><td><strong>1 year</strong> after handling</td></tr>
 <tr><td>Translation history and personal dictionary</td><td>Offline translation</td><td><strong>Stored only on the phone</strong>; not sent to the Operator</td></tr>
 </tbody></table>
 <h3>2. Information Shared with Businesses</h3>
 <ul>
 <li>Content that a Customer sends directly in consultations, reservations, or orders is viewed by the owner and staff of the relevant business.</li>
-<li>When a Customer searches for nearby venues using AI, the <strong>request message and distance</strong> are shared with nearby businesses so that the Customer may receive invitations. <strong>The Customer's name and location coordinates are not shared with businesses.</strong> If MY › Settings › "Receive invitations from nearby businesses" is turned off, nothing is shared.</li>
+<li>When a Customer searches for nearby venues using AI, the <strong>request message and distance</strong> are shared with nearby businesses so that the Customer may receive invitations. <strong>The Customer's name and location coordinates are not shared with businesses.</strong> If MY › Notice › "Nearby alerts" is turned off, nothing is shared.</li>
 <li>When a Customer makes a reservation, the <strong>no-show count (last 6 months) is provided</strong> to the venue that received the reservation. <strong>Only the combined count</strong> across all venues is shown; details such as at which venue or when a no-show occurred are not shown. If there are no no-shows, nothing is displayed.</li>
 <li>Business statistics show only figures from which Customers cannot be identified (numbers of impressions and visits, distance ranges).</li>
 </ul>
 <h3>3. Outsourcing of Processing (Service Providers)</h3>
 <table><thead><tr><th>Recipient</th><th>Tasks</th></tr></thead><tbody>
 <tr><td>Supabase Inc.</td><td>Data storage and login servers (Singapore region)</td></tr>
-<tr><td>Google LLC (Gemini API)</td><td>Understanding AI chats, reading photos of business cards and menus, screening photos for sexually explicit content</td></tr>
+<tr><td>Google LLC (Gemini API)</td><td>Understanding AI chats, reading photos of business cards and menus, checking photos for explicit content, translating menus and business descriptions, creating business card background images (when turned on)</td></tr>
 <tr><td>Expo(650 Industries) · Google Firebase · Apple</td><td>App updates, delivery of push notifications</td></tr>
 <tr><td>Google · Apple</td><td>Social login</td></tr>
+<tr><td>Google LLC (Google Maps Platform)</td><td>Map images, finding locations from addresses</td></tr>
+<tr><td>GitHub Inc. (GitHub Pages)</td><td>Hosting online business card and friend invitation pages</td></tr>
 </tbody></table>
 <p>No advertising, analytics, or tracking tools are used.</p>
 <h3>4. Cross-Border Transfer</h3>
 <p>Because the servers of the above service providers are located outside the Republic of Korea (Singapore, the United States, etc.), personal information is transferred abroad when the Service is used. The items transferred are those listed in Section 1. If you do not wish your information to be transferred, you cannot use the Service.</p>
 <h3>5. User Rights</h3>
-<p>Users may view, correct, or delete their information and delete their account at any time (MY › Settings › Delete Account). Contact: <a href="mailto:yaon.support@gmail.com">yaon.support@gmail.com</a></p>
+<p>Users may view, correct, or delete their information and delete their account at any time (MY › Security › Delete account). Contact: <a href="mailto:yaon.support@gmail.com">yaon.support@gmail.com</a> How to delete your account: <a href="../delete-account.html#en">Account deletion request</a></p>
 <h3>6. Security Measures</h3>
 <p>Encryption in transit (HTTPS), per-account access restrictions (database row-level security), separation of administrator privileges, and MY page lock (pattern or password, stored only on the phone).</p>
 <h3>7. Persons Under 19</h3>
 <p>The Service does not collect personal information from persons under 19. If a User is found to be under 19, the account and information will be deleted.</p>
 <h3>8. Chief Privacy Officer</h3>
-<p>[Name, title], <a href="mailto:yaon.support@gmail.com">yaon.support@gmail.com</a></p>
+<p>YAON Operations Manager, <a href="mailto:yaon.support@gmail.com">yaon.support@gmail.com</a></p>
 <h3>9. Changes</h3>
-<p>If this Policy is changed, notice will be given in the app and on this page. Effective date: [Effective date]</p>
+<p>If this Policy is changed, notice will be given in the app and on this page. Effective date: December 1, 2026</p>
 <h2>Location Information Notice (Summary)</h2>
 <ul>
 <li>Location is collected <strong>only while the app is in use</strong>; background location is not used.</li>
