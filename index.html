@@ -208,6 +208,10 @@ header.solid{background:rgba(8,8,11,.82);backdrop-filter:blur(14px);-webkit-back
 .vshort .pv video{position:absolute;inset:0}
 .vshort .lang{position:absolute;left:12px;top:12px;z-index:3;font-size:11.5px;font-weight:800;color:#1a1206;background:linear-gradient(135deg,#f3d27a,#d9ad3c);border-radius:999px;padding:3px 10px}
 .vshort .vcap{text-align:center;margin-top:12px}
+.vfull{position:fixed;inset:0;z-index:200;background:#000;display:none;align-items:center;justify-content:center}
+.vfull.on{display:flex}
+.vfull video{width:100%;height:100%;object-fit:contain;background:#000}
+.vfull .vclose{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);right:14px;width:44px;height:44px;border-radius:50%;border:1px solid #ffffff55;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);color:#fff;font-size:20px;line-height:1;cursor:pointer;z-index:2}
 .vshort .vcap p{color:var(--sub)}
 .vshort .play span{width:64px;height:64px;border-radius:50%;background:#ffffff26;backdrop-filter:blur(6px);border:1px solid #ffffff66;display:grid;place-items:center;font-size:22px;color:#fff}
 .vshort .soon{position:absolute;left:12px;top:12px;font-size:11.5px;font-weight:800;color:#fff;background:#ff4fa3;border-radius:999px;padding:3px 10px}
@@ -231,7 +235,7 @@ header.solid{background:rgba(8,8,11,.82);backdrop-filter:blur(14px);-webkit-back
 @keyframes catjump{0%,70%,100%{transform:translateY(0) scale(1)}74%{transform:translateY(0) scale(1.04,.95)}82%{transform:translateY(-18%) scale(.98,1.03)}90%{transform:translateY(0) scale(1.04,.96)}94%{transform:translateY(0) scale(1)}}
 @keyframes shadow{0%,74%,100%{transform:scale(1);opacity:.6}82%{transform:scale(.6);opacity:.3}90%{transform:scale(1);opacity:.6}}
 @media (prefers-reduced-motion:reduce){.cat3d,.cat3d .ch,.cat3d .cbl,.catw .shadow{animation:none}}
-@media (max-width:900px){.gwrap{grid-template-columns:1fr 1fr;gap:16px}.gmid{grid-column:1/-1;order:-1}.glab{white-space:normal}.catw{width:170px}.glist{justify-content:center!important}.vshort{width:100%}}
+@media (max-width:900px){.gwrap{grid-template-columns:1fr 1fr;grid-template-areas:'ll lr' 'vc vo';gap:10px 14px;margin-top:28px}.gmid{display:contents}.catw{display:none!important}.glab{white-space:normal;justify-content:center;text-align:center!important;align-self:auto!important;font-size:14px}.glab .tri{display:none}.glab.l{grid-area:ll}.glab.r{grid-area:lr}#gl-c{grid-area:vc}#gl-o{grid-area:vo}.glist{justify-content:center!important}.vshort{width:100%}.vshort .vcap h4{font-size:15px}.vshort .vcap p{font-size:12px}}
 
 /* owner */
 .owner{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
@@ -593,14 +597,22 @@ var V={
  c:{h:'YAON 소개 영상',p:'한국어 · 40초',src:'video/guide_ko.mp4',poster:'video/guide_ko.jpg',lang:'KO'},
  o:{h:'Giới thiệu YAON',p:'Tiếng Việt · 40 giây',src:'video/guide_vi.mp4',poster:'video/guide_vi.jpg',lang:'VI'}
 };
-function vshort(v){return '<div class="vshort rv on"><div class="pv"><video src="'+v.src+'?v=1795641100" poster="'+v.poster+'?v=1795641100" playsinline preload="none"></video><span class="lang">'+v.lang+'</span><button class="play" aria-label="재생"><span>▶</span></button></div><div class="vcap"><h4>'+v.h+'</h4><p>'+v.p+'</p></div></div>'}
+function vshort(v){return '<div class="vshort rv on" data-src="'+v.src+'?v=1795641100" data-poster="'+v.poster+'?v=1795641100"><div class="pv"><video src="'+v.src+'?v=1795641100" poster="'+v.poster+'?v=1795641100" playsinline preload="none"></video><span class="lang">'+v.lang+'</span><button class="play" aria-label="재생"><span>▶</span></button></div><div class="vcap"><h4>'+v.h+'</h4><p>'+v.p+'</p></div></div>'}
 document.getElementById('gl-c').innerHTML=vshort(V.c);
 document.getElementById('gl-o').innerHTML=vshort(V.o);
 (function(){var g=document.querySelector('.gmid'),c=document.querySelector('.vshort .vcap');function f(){if(innerWidth>900&&c){g.style.setProperty('--vcap',(c.offsetHeight+12)+'px')}}f();addEventListener('resize',f);addEventListener('load',f)})();
+var vfull=document.createElement('div');vfull.className='vfull';vfull.innerHTML='<video playsinline controls></video><button class="vclose" aria-label="닫기">✕</button>';document.body.appendChild(vfull);
+var fv=vfull.querySelector('video');
+function openFull(src,poster){document.querySelectorAll('.vshort video').forEach(function(o){o.pause()});fv.src=src;fv.poster=poster;vfull.classList.add('on');document.documentElement.style.overflow='hidden';fv.play().catch(function(){});history.pushState({vfull:1},'')}
+function closeFull(back){if(!vfull.classList.contains('on'))return;fv.pause();fv.removeAttribute('src');fv.load();vfull.classList.remove('on');document.documentElement.style.overflow='';if(back&&history.state&&history.state.vfull)history.back()}
+vfull.querySelector('.vclose').onclick=function(){closeFull(true)};
+fv.addEventListener('ended',function(){closeFull(true)});
+addEventListener('popstate',function(){closeFull(false)});
+addEventListener('keydown',function(e){if(e.key==='Escape')closeFull(true)});
 document.querySelectorAll('.vshort').forEach(function(w){
   var vd=w.querySelector('video'),pb=w.querySelector('.play'),cap={style:{}};
   function start(){document.querySelectorAll('.vshort video').forEach(function(o){if(o!==vd&&!o.paused)o.pause()});vd.controls=true;vd.play();pb.style.display='none';cap.style.opacity=0}
-  pb.onclick=start;
+  pb.onclick=function(){if(innerWidth<=900){openFull(w.dataset.src,w.dataset.poster)}else start()};
   vd.addEventListener('pause',function(){if(vd.currentTime===0||vd.ended){pb.style.display='';cap.style.opacity=1;vd.controls=false}});
   vd.addEventListener('ended',function(){vd.currentTime=0;pb.style.display='';cap.style.opacity=1;vd.controls=false});
 });
