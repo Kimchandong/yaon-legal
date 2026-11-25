@@ -58,8 +58,9 @@ header.solid{background:rgba(8,8,11,.82);backdrop-filter:blur(14px);-webkit-back
 .btn::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:var(--neon);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;z-index:-1}
 .btn.y{background:var(--yellow);color:#111}.btn.y::before{display:none}
 @property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
-.btn.spin::before{background:conic-gradient(from var(--ang),#3ecbff,#9b5cff,#ff4fa3,#f2d27b,#3ecbff);animation:spin 3.2s linear infinite;padding:2px}
-.btn.spin{box-shadow:0 0 22px -6px #9b5cff99}
+.btn.dl{background:#ffffff10}
+.btn.dl::before{display:none}
+.btn.dl::after{content:"";position:absolute;left:0;right:0;top:-11px;height:2px;background:linear-gradient(90deg,#3ecbff,#9b5cff,#ff4fa3)}
 @keyframes spin{to{--ang:360deg}}
 .ring-anim{position:relative;isolation:isolate}
 .ring-anim::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.6px;background:conic-gradient(from var(--ang),#3ecbff,#9b5cff,#ff4fa3,#f2d27b,#3ecbff);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 3.2s linear infinite;z-index:-1;pointer-events:none}
@@ -67,7 +68,6 @@ header.solid{background:rgba(8,8,11,.82);backdrop-filter:blur(14px);-webkit-back
 .gold::after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1.6px;background:conic-gradient(from var(--ang),#ffffff00 0deg,#ffffffee 70deg,#ffffff00 140deg,#ffffff55 250deg,#ffffff00 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 2.6s linear infinite;pointer-events:none}
 .hashring{position:absolute!important;z-index:3;width:12.6%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;transition:opacity .4s}
 .hashring::before{padding:2px!important;filter:drop-shadow(0 0 4px #3ecbff99)}
-@media (prefers-reduced-motion:reduce){.btn.spin::before{animation:none}}
 .burger{display:none;width:44px;height:44px;border-radius:12px;background:#ffffff10;border:0;color:var(--text);font-size:20px}
 @media (max-width:900px){
   .menu{position:fixed;inset:68px 0 auto 0;flex-direction:column;background:rgba(8,8,11,.97);padding:12px 20px 20px;border-bottom:1px solid var(--line);transform:translateY(-120%);transition:transform .3s}
@@ -78,14 +78,15 @@ header.solid{background:rgba(8,8,11,.82);backdrop-filter:blur(14px);-webkit-back
 }
 
 /* hero */
-.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 40px;overflow:hidden}
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:92px 0 0;overflow:hidden}
+.hero>.hero-grid{flex:1;align-content:center}
 
-.hero .waves{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.hero .waves{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;-webkit-mask:linear-gradient(#000 82%,transparent);mask:linear-gradient(#000 82%,transparent)}
 .hero .waves i{position:absolute;border-radius:45% 55% 60% 40%/50% 40% 60% 50%;filter:blur(90px);opacity:.7;will-change:transform}
-.hero .waves .w1{width:78vw;height:60vw;left:-18vw;top:-16vw;background:radial-gradient(closest-side,#7c3aed,transparent 72%);animation:w1 16s ease-in-out infinite alternate}
-.hero .waves .w2{width:72vw;height:54vw;right:-20vw;top:-2vw;background:radial-gradient(closest-side,#2563eb,transparent 72%);animation:w2 19s ease-in-out infinite alternate}
-.hero .waves .w3{width:66vw;height:48vw;left:10vw;bottom:-20vw;background:radial-gradient(closest-side,#8b5cf6,transparent 70%);opacity:.55;animation:w3 22s ease-in-out infinite alternate}
-.hero .waves .w4{width:60vw;height:42vw;right:0;bottom:-14vw;background:radial-gradient(closest-side,#0ea5e9,transparent 70%);opacity:.45;animation:w4 25s ease-in-out infinite alternate}
+.hero .waves .w1{width:78vw;height:60vw;left:-18vw;top:-16vw;background:radial-gradient(closest-side,#7c3aed,transparent 72%);animation:w1 11s ease-in-out infinite alternate}
+.hero .waves .w2{width:72vw;height:54vw;right:-20vw;top:-2vw;background:radial-gradient(closest-side,#2563eb,transparent 72%);animation:w2 13s ease-in-out infinite alternate}
+.hero .waves .w3{width:66vw;height:48vw;left:10vw;bottom:-20vw;background:radial-gradient(closest-side,#8b5cf6,transparent 70%);opacity:.55;animation:w3 15s ease-in-out infinite alternate}
+.hero .waves .w4{width:60vw;height:42vw;right:0;bottom:-14vw;background:radial-gradient(closest-side,#0ea5e9,transparent 70%);opacity:.45;animation:w4 17s ease-in-out infinite alternate}
 @keyframes w1{0%{transform:translate(0,0) rotate(0) scale(1)}33%{transform:translate(14vw,6vw) rotate(25deg) scale(1.15,.9)}66%{transform:translate(6vw,14vw) rotate(-10deg) scale(.92,1.1)}100%{transform:translate(20vw,2vw) rotate(40deg) scale(1.08)}}
 @keyframes w2{0%{transform:translate(0,0) rotate(0) scale(1)}30%{transform:translate(-12vw,10vw) rotate(-30deg) scale(1.1,.88)}70%{transform:translate(-4vw,-4vw) rotate(15deg) scale(.9,1.12)}100%{transform:translate(-18vw,6vw) rotate(-45deg) scale(1.05)}}
 @keyframes w3{0%{transform:translate(0,0) rotate(0)}40%{transform:translate(-10vw,-8vw) rotate(35deg) scale(1.2,.85)}100%{transform:translate(12vw,-4vw) rotate(-20deg) scale(.9,1.1)}}
@@ -137,7 +138,7 @@ header.solid{background:rgba(8,8,11,.82);backdrop-filter:blur(14px);-webkit-back
 @media (max-width:900px){.hero-phone{margin-top:20px}.hero-phone .chip.c2{right:0}.hero-phone .cat{width:110px;left:2%}}
 
 /* marquee */
-.strip{padding:44px 0 0;overflow:hidden;width:100%;position:relative;z-index:1;display:grid;gap:14px;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.strip{margin-top:40px;padding:18px 0;background:rgba(0,0,0,.3);overflow:hidden;width:100%;position:relative;z-index:1;display:grid;gap:14px;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .strip .track{display:flex;gap:46px;width:max-content}
 .strip .t1{animation:mqR 46s linear infinite}
 .strip .t2{animation:mq 46s linear infinite}
@@ -281,7 +282,7 @@ footer nav a:hover{color:var(--text)}
       <a href="#owner">업주</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a href="#download" class="btn spin">앱 다운로드</a>
+    <a href="#download" class="btn dl">앱 다운로드</a>
     <button class="burger" id="burger" aria-label="메뉴 열기">☰</button>
   </div>
 </header>
