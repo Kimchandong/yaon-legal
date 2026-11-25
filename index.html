@@ -79,9 +79,20 @@ header.solid{background:rgba(8,8,11,.82);backdrop-filter:blur(14px);-webkit-back
 
 /* hero */
 .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 40px;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:760px;height:760px;background:radial-gradient(closest-side,#9b5cff40,transparent);filter:blur(10px);pointer-events:none}
-.hero::after{content:"";position:absolute;inset:auto auto -25% -15%;width:700px;height:700px;background:radial-gradient(closest-side,#3ecbff2e,transparent);pointer-events:none}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;position:relative;z-index:1}
+
+.hero .waves{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.hero .waves i{position:absolute;border-radius:45% 55% 60% 40%/50% 40% 60% 50%;filter:blur(70px);opacity:.55;will-change:transform}
+.hero .waves .w1{width:60vw;height:46vw;left:-12vw;top:-10vw;background:radial-gradient(closest-side,#7c3aed,transparent 72%);animation:w1 38s ease-in-out infinite alternate}
+.hero .waves .w2{width:55vw;height:40vw;right:-14vw;top:4vw;background:radial-gradient(closest-side,#2563eb,transparent 72%);animation:w2 46s ease-in-out infinite alternate}
+.hero .waves .w3{width:50vw;height:36vw;left:18vw;bottom:-14vw;background:radial-gradient(closest-side,#8b5cf6,transparent 70%);opacity:.4;animation:w3 52s ease-in-out infinite alternate}
+.hero .waves .w4{width:44vw;height:30vw;right:8vw;bottom:-8vw;background:radial-gradient(closest-side,#0ea5e9,transparent 70%);opacity:.32;animation:w4 60s ease-in-out infinite alternate}
+@keyframes w1{0%{transform:translate(0,0) rotate(0) scale(1)}33%{transform:translate(14vw,6vw) rotate(25deg) scale(1.15,.9)}66%{transform:translate(6vw,14vw) rotate(-10deg) scale(.92,1.1)}100%{transform:translate(20vw,2vw) rotate(40deg) scale(1.08)}}
+@keyframes w2{0%{transform:translate(0,0) rotate(0) scale(1)}30%{transform:translate(-12vw,10vw) rotate(-30deg) scale(1.1,.88)}70%{transform:translate(-4vw,-4vw) rotate(15deg) scale(.9,1.12)}100%{transform:translate(-18vw,6vw) rotate(-45deg) scale(1.05)}}
+@keyframes w3{0%{transform:translate(0,0) rotate(0)}40%{transform:translate(-10vw,-8vw) rotate(35deg) scale(1.2,.85)}100%{transform:translate(12vw,-4vw) rotate(-20deg) scale(.9,1.1)}}
+@keyframes w4{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(-16vw,-10vw) rotate(-25deg) scale(1.15)}100%{transform:translate(-6vw,4vw) rotate(30deg) scale(.95,1.1)}}
+@media (prefers-reduced-motion:reduce){.hero .waves i{animation:none}}
+@media (max-width:900px){.hero .waves i{filter:blur(50px)}.hero .waves .w1{width:110vw;height:90vw}.hero .waves .w2{width:100vw;height:80vw;top:40vh}.hero .waves .w3,.hero .waves .w4{width:90vw;height:70vw}}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;position:relative;z-index:1}
 .badge{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border-radius:999px;background:#ffffff0d;border:1px solid var(--line);font-size:14px;color:var(--sub)}
 .badge b{background:var(--goldg);color:#1a1206;border-radius:999px;padding:3px 10px;font-size:12px;white-space:nowrap;flex:none}
 .hero h1{font-size:clamp(40px,6.6vw,78px);line-height:1.08;font-weight:900;letter-spacing:-.035em;margin:22px 0 22px}
@@ -278,6 +289,7 @@ footer nav a:hover{color:var(--text)}
 <main>
 <!-- 1. HERO -->
 <section class="hero" id="home">
+  <div class="waves" aria-hidden="true"><i class="w1"></i><i class="w2"></i><i class="w3"></i><i class="w4"></i></div>
   <div class="wrap hero-grid">
     <div>
       <div class="badge rv"><b class="gold">무료</b> 한국인을 위한 해외 나이트라이프 AI 컨시어지</div>
@@ -304,7 +316,7 @@ footer nav a:hover{color:var(--text)}
       </div>
     </div>
     <div class="hero-phone rv d2">
-      <div class="phone"><div class="scr"><span class="hashring ring-anim" style="left:59.92%;top:8.74%;width:12.7%"></span><img src="img/intro.webp" alt="YAON 시작 화면 — 오늘 밤, 뭐가 당기세요?"></div></div>
+      <div class="phone"><div class="scr"><span class="hashring ring-anim" style="left:59.95%;top:8.78%;width:13.3%"></span><img src="img/intro.webp" alt="YAON 시작 화면 — 오늘 밤, 뭐가 당기세요?"></div></div>
       <div class="chip c1 ring-anim"><span class="dot"></span>근처 3km · 영업 중 12곳</div>
       <div class="chip c2 ring-anim">💬 "근처 가라오케"</div>
     </div>
@@ -363,7 +375,7 @@ footer nav a:hover{color:var(--text)}
     <p class="lead rv d2">스크롤을 내리면 휴대폰 화면이 단계에 맞춰 바뀌어요.</p>
   </div>
   <div class="wrap how">
-    <div class="sticky"><div class="phone"><div class="scr" id="hscr"><span class="hashring ring-anim" id="hring" style="left:61.5%;top:9.79%;width:13.5%"></span>
+    <div class="sticky"><div class="phone"><div class="scr" id="hscr"><span class="hashring ring-anim" id="hring" style="left:61.85%;top:9.8%;width:12.95%"></span>
       <img src="img/chat.webp" alt="" data-k="0">
       <img src="img/biz.webp" alt="" data-k="1" class="hide">
       <img src="img/consult.webp" alt="" data-k="2" class="hide">
@@ -551,7 +563,7 @@ function go(i,user){
   cur=(i+S.length)%S.length;var s=S[cur];
   [].forEach.call(tabs.children,function(b,k){b.classList.toggle('on',k===cur);if(k===cur&&user)b.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'})});
   [].forEach.call(scr.querySelectorAll('img'),function(im,k){im.classList.toggle('hide',k!==cur)});
-  var HP={chat:[61.5,9.79],menu:[61.4,9.56],translate:[60.9,9.56]};
+  var HP={chat:[61.85,9.8],menu:[62.3,9.55],translate:[62.3,9.55]};
   if(window.sring){var hp=HP[s.img];sring.style.opacity=hp?1:0;if(hp){sring.style.left=hp[0]+'%';sring.style.top=hp[1]+'%'}}
   [].forEach.call(th.children,function(t,k){t.classList.toggle('on',k===cur%5&&cur<5)});
   info.className='info fade';void info.offsetWidth;
@@ -559,7 +571,7 @@ function go(i,user){
   var pg=document.getElementById('pg');pg.style.transition='none';pg.style.width='0';requestAnimationFrame(function(){requestAnimationFrame(function(){pg.style.transition='width '+DUR+'ms linear';pg.style.width='100%'})});
   clearTimeout(timer);timer=setTimeout(function(){go(cur+1)},DUR);
 }
-window.sring=document.createElement('span');sring.className='hashring ring-anim';sring.style.cssText='left:61.5%;top:9.79%;width:13.5%';scr.appendChild(sring);
+window.sring=document.createElement('span');sring.className='hashring ring-anim';sring.style.cssText='left:61.85%;top:9.8%;width:12.95%';scr.appendChild(sring);
 go(0);
 // 화면 밖이면 자동 넘김 멈춤
 new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)go(cur);else clearTimeout(timer)})}).observe(document.getElementById('screens'));
