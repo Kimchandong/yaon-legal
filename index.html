@@ -20,7 +20,7 @@ if(!L){var mob=/Android|iPhone|iPad|iPod|Mobile/i.test(u)||(navigator.maxTouchPo
 window.LANG=L;var h=document.documentElement;h.lang=L;
 var F={th:'Noto+Sans+Thai',lo:'Noto+Sans+Lao',km:'Noto+Sans+Khmer',my:'Noto+Sans+Myanmar'};
 if(F[L])document.write('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family='+F[L]+':wght@300;400;600;800&display=swap">');
-if(L!=='ko'){h.classList.add('i18n-wait');window.I18N=fetch('i18n/'+L+'.json?v=1795645300').then(function(r){return r.json()}).catch(function(){return {}})}else window.I18N=Promise.resolve({});
+if(L!=='ko'){h.classList.add('i18n-wait');window.I18N=fetch('i18n/'+L+'.json?v=1795645900').then(function(r){return r.json()}).catch(function(){return {}})}else window.I18N=Promise.resolve({});
 })();
 </script>
 
@@ -593,7 +593,7 @@ var S=[
  {t:'업체 정보',img:'biz',h:'서비스·가격·리뷰·경로를 한 화면에',p:'업체 카드를 누르면 서비스와 가격, 고객 리뷰, 길찾기를 한 번에 볼 수 있어요.',l:['메뉴·서비스 가격 "금액 ₫" 표시','고객 리뷰·사진','구글 지도 길찾기']},
  {t:'1:1 상담',img:'consult',h:'한국어로 묻고 한국어로 받기',p:'상담 내용은 업체 언어로 자동 번역돼요. 답이 늦으면 비슷한 근처 업체를 추천해요.',l:['자동 번역','유흥 업종 24시간 뒤 자동 삭제','신고·차단']},
  {t:'예약',img:'reserve',h:'시간만 고르면 가격까지',p:'상품·날짜·인원을 말하면 예약 카드가 만들어지고, 60·90·120분 중 고르면 가격이 계산돼요.',l:['시간별 가격 옵션','말로 날짜·인원 수정','업체 상담방으로 바로 전달']},
- {t:'배달 주문',img:'delivery',h:'말하면 배달되는 음식점까지',p:'"쌀국수 배달 시켜줘"처럼 말하면 내 위치로 배달되는 음식점과 메뉴를 보여 줘요. 담아서 주문하면 주문 상태를 바로 알려 드려요.',l:['배달비·최소 주문·거리 표시','메뉴 담기·수량 조절','접수·조리 중·배달 중·완료 알림']},
+ {t:'배달 주문',img:'delivery',h:'말하면 배달되는 음식점까지',p:'"쌀국수 배달 시켜줘"처럼 말하면 내 위치로 배달되는 음식점과 메뉴를 보여 줘요. 담아서 주문하면 주문 상태를 바로 알려 드려요.',l:['배달되는 메뉴는 "배달" 표시','메뉴 담기·수량 조절','접수·조리 중·배달 중·완료 알림']},
  {t:'메뉴판 번역',img:'menu',h:'현지 메뉴판도 한국어로',p:'메뉴판을 찍으면 한국어 이름과 가격으로 정리해 드려요.',l:['사진 그대로 유지','메뉴·가격 표로 정리','현지어 원문 함께']},
  {t:'오프라인 번역',img:'translate',h:'인터넷이 없어도 번역',p:'계산·주문에 자주 쓰는 말을 인터넷 없이도 현지어로 보여 주고 읽어 줘요.',l:['베트남어·태국어·일본어 등','소리로 듣기','복사·크게 보기']},
  {t:'근처 이벤트',img:'event',h:'# 하나로 근처 혜택 보기',p:'# 버튼을 누르면 내 찾기 거리 안의 진행 중인 이벤트를 볼 수 있어요.',l:['거리·업종·할인별 정렬','공유하기','업체 손 흔들기 수락']},
@@ -664,8 +664,8 @@ document.querySelectorAll('.store').forEach(function(a){var u=a.getAttribute('ar
 <script>
 (function(){
 var L=window.LANG,NAMES=[['ko','한국어','Korean'],['en','English','English'],['ja','日本語','Japanese'],['zh','中文','Chinese'],['vi','Tiếng Việt','Vietnamese'],['th','ไทย','Thai'],['ms','Bahasa Melayu','Malay'],['id','Bahasa Indonesia','Indonesian'],['fil','Filipino','Filipino'],['lo','ລາວ','Lao'],['km','ខ្មែរ','Khmer'],['my','မြန်မာ','Burmese'],['mn','Монгол','Mongolian']];
-var CL={ko:'',en:'en/',ja:'ja/',th:'th/',vi:'vi/'};var cl=(L in CL)?CL[L]:'en/';var LOC=['chat','menu','consult','reward','owner','event'];
-window.IMG=function(k){return 'img/'+(cl&&LOC.indexOf(k)>-1?cl:'')+k+'.webp?v=1795642000'};
+var CL={ko:'',en:'en/',ja:'ja/',th:'th/',vi:'vi/'};var cl=(L in CL)?CL[L]:'en/';var LOC=['chat','menu','consult','reward','owner','event','intro','biz','travel'];
+window.IMG=function(k){return 'img/'+(cl&&LOC.indexOf(k)>-1?cl:'')+k+'.webp?v='+(k==='delivery'?'1795645900':(['intro','biz','travel'].indexOf(k)>-1?'1795646400':'1795642000'))};if(cl){var _hi=document.querySelector('img[src*="img/intro"]');if(_hi&&_hi.previousElementSibling){var _r=_hi.previousElementSibling.style;_r.left='64.6%';_r.top='9.87%';_r.width='11.8%'}}
 var mn=document.getElementById('langmenu');
 NAMES.forEach(function(n){var a=document.createElement('a');a.href='?lang='+n[0];a.setAttribute('role','menuitem');a.innerHTML='<span>'+n[1]+'</span><small>'+n[2]+'</small>';if(n[0]===L)a.className='on';a.onclick=function(e){e.preventDefault();try{localStorage.setItem('yaon_lang',n[0])}catch(_){ }location.href=location.pathname+'?lang='+n[0]};mn.appendChild(a);if(n[0]===L){document.getElementById('langname').textContent=n[1];document.getElementById('langcode').textContent=n[0].toUpperCase()}});
 document.getElementById('langbtn').onclick=function(e){e.stopPropagation();mn.classList.toggle('open')};
