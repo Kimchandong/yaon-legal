@@ -7,11 +7,11 @@
 <meta name="description" content="해외에서 한국어 한마디로 근처 바·클럽·가라오케·마사지·맛집을 찾고, 1:1 자동 번역 상담·배달·예약까지. 11개국 여행정보, 8개 언어 지원.">
 <meta property="og:title" content="YAON 夜 — 오늘 밤, 뭐가 당기세요?">
 <meta property="og:description" content="해외에서 한국어 한마디로 찾는 밤문화·맛집·배달·예약">
-<meta property="og:image" content="https://yaon-app.com/img/icon.png?v=1795640623">
+<meta property="og:image" content="https://yaon-app.com/img/icon.png?v=1795640900">
 <meta property="og:url" content="https://yaon-app.com/">
 <meta name="theme-color" content="#08080b">
-<link rel="icon" href="img/favicon.png?v=1795640623">
-<link rel="apple-touch-icon" href="img/icon.png?v=1795640623">
+<link rel="icon" href="img/favicon.png?v=1795640900">
+<link rel="apple-touch-icon" href="img/icon.png?v=1795640900">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&text=%E5%A4%9C&display=swap">
@@ -204,7 +204,11 @@ header.solid{background:rgba(8,8,11,.82);backdrop-filter:blur(14px);-webkit-back
 .vshort .pv img{width:100%;height:100%;object-fit:cover;object-position:top;opacity:.55;transition:opacity .3s,transform .6s}
 .vshort:hover .pv img{opacity:.75;transform:scale(1.03)}
 .vshort .pv video{width:100%;height:100%;object-fit:cover}
-.vshort .play{position:absolute;inset:0;display:grid;place-items:center}
+.vshort .play{position:absolute;inset:0;display:grid;place-items:center;background:none;border:0;cursor:pointer;z-index:2}
+.vshort .pv video{position:absolute;inset:0}
+.vshort .lang{position:absolute;left:12px;top:12px;z-index:3;font-size:11.5px;font-weight:800;color:#1a1206;background:linear-gradient(135deg,#f3d27a,#d9ad3c);border-radius:999px;padding:3px 10px}
+.vshort .vcap{text-align:center;margin-top:12px}
+.vshort .vcap p{color:var(--sub)}
 .vshort .play span{width:64px;height:64px;border-radius:50%;background:#ffffff26;backdrop-filter:blur(6px);border:1px solid #ffffff66;display:grid;place-items:center;font-size:22px;color:#fff}
 .vshort .soon{position:absolute;left:12px;top:12px;font-size:11.5px;font-weight:800;color:#fff;background:#ff4fa3;border-radius:999px;padding:3px 10px}
 .vshort .cap{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 16px;background:linear-gradient(transparent,#000d)}
@@ -317,7 +321,7 @@ footer nav a:hover{color:var(--text)}
       </div>
     </div>
     <div class="hero-phone rv d2">
-      <div class="phone"><div class="scr"><span class="hashring ring-anim" style="left:59.95%;top:8.78%;width:13.3%"></span><img src="img/intro.webp?v=1795640623" alt="YAON 시작 화면 — 오늘 밤, 뭐가 당기세요?"></div></div>
+      <div class="phone"><div class="scr"><span class="hashring ring-anim" style="left:59.95%;top:8.78%;width:13.3%"></span><img src="img/intro.webp?v=1795640900" alt="YAON 시작 화면 — 오늘 밤, 뭐가 당기세요?"></div></div>
       <div class="chip c1 ring-anim"><span class="dot"></span>근처 3km · 영업 중 12곳</div>
       <div class="chip c2 ring-anim">💬 "근처 가라오케"</div>
     </div>
@@ -377,18 +381,18 @@ footer nav a:hover{color:var(--text)}
   </div>
   <div class="wrap how">
     <div class="sticky"><div class="phone"><div class="scr" id="hscr"><span class="hashring ring-anim" id="hring" style="left:61.85%;top:9.8%;width:12.95%"></span>
-      <img src="img/chat.webp?v=1795640623" alt="" data-k="0">
-      <img src="img/biz.webp?v=1795640623" alt="" data-k="1" class="hide">
-      <img src="img/consult.webp?v=1795640623" alt="" data-k="2" class="hide">
-      <img src="img/reserve.webp?v=1795640623" alt="" data-k="3" class="hide">
-      <img src="img/reward.webp?v=1795640623" alt="" data-k="4" class="hide">
+      <img src="img/chat.webp?v=1795640900" alt="" data-k="0">
+      <img src="img/biz.webp?v=1795640900" alt="" data-k="1" class="hide">
+      <img src="img/consult.webp?v=1795640900" alt="" data-k="2" class="hide">
+      <img src="img/reserve.webp?v=1795640900" alt="" data-k="3" class="hide">
+      <img src="img/reward.webp?v=1795640900" alt="" data-k="4" class="hide">
     </div></div></div>
     <div class="steps">
-      <div class="step" data-k="0"><span class="n">STEP 01</span><h3>위치를 공유하고<br>말로 물어보세요</h3><p>앱을 열고 위치 공유를 허용한 뒤, 찾고 싶은 걸 그냥 말하세요. 업종·메뉴·업체 이름 모두 알아들어요.</p><span class="say">근처 가라오케</span><img class="mimg" src="img/chat.webp?v=1795640623" alt="대화로 찾기 화면"></div>
-      <div class="step" data-k="1"><span class="n">STEP 02</span><h3>업체 카드에서<br>한눈에 확인</h3><p>영업 중 여부, 거리, 서비스·메뉴 가격, 고객 리뷰, 길찾기까지. 마음에 들면 바로 상담이나 예약으로.</p><img class="mimg" src="img/biz.webp?v=1795640623" alt="업체 카드 화면"></div>
-      <div class="step" data-k="2"><span class="n">STEP 03</span><h3>한국어로 상담하면<br>자동으로 번역</h3><p>[1:1 채팅상담]에서 한국어로 묻기만 하면 돼요. 답이 늦으면 비슷한 근처 업체를 바로 추천해요.</p><img class="mimg" src="img/consult.webp?v=1795640623" alt="1:1 상담 화면"></div>
-      <div class="step" data-k="3"><span class="n">STEP 04</span><h3>예약·배달은<br>카드 한 장으로</h3><p>"아로마 마사지, 내일 20시, 1명"처럼 말하면 예약 카드가 만들어지고, 시간만 고르면 가격까지 계산돼요.</p><img class="mimg" src="img/reserve.webp?v=1795640623" alt="예약 카드 화면"></div>
-      <div class="step" data-k="4"><span class="n">STEP 05</span><h3>방문하면<br>혜택이 쌓여요</h3><p>MY의 QR을 업체에 보여 주세요. 방문 기록이 쌓이고 단골 혜택·쿠폰을 받을 수 있어요.</p><img class="mimg" src="img/reward.webp?v=1795640623" alt="방문 적립 화면"></div>
+      <div class="step" data-k="0"><span class="n">STEP 01</span><h3>위치를 공유하고<br>말로 물어보세요</h3><p>앱을 열고 위치 공유를 허용한 뒤, 찾고 싶은 걸 그냥 말하세요. 업종·메뉴·업체 이름 모두 알아들어요.</p><span class="say">근처 가라오케</span><img class="mimg" src="img/chat.webp?v=1795640900" alt="대화로 찾기 화면"></div>
+      <div class="step" data-k="1"><span class="n">STEP 02</span><h3>업체 카드에서<br>한눈에 확인</h3><p>영업 중 여부, 거리, 서비스·메뉴 가격, 고객 리뷰, 길찾기까지. 마음에 들면 바로 상담이나 예약으로.</p><img class="mimg" src="img/biz.webp?v=1795640900" alt="업체 카드 화면"></div>
+      <div class="step" data-k="2"><span class="n">STEP 03</span><h3>한국어로 상담하면<br>자동으로 번역</h3><p>[1:1 채팅상담]에서 한국어로 묻기만 하면 돼요. 답이 늦으면 비슷한 근처 업체를 바로 추천해요.</p><img class="mimg" src="img/consult.webp?v=1795640900" alt="1:1 상담 화면"></div>
+      <div class="step" data-k="3"><span class="n">STEP 04</span><h3>예약·배달은<br>카드 한 장으로</h3><p>"아로마 마사지, 내일 20시, 1명"처럼 말하면 예약 카드가 만들어지고, 시간만 고르면 가격까지 계산돼요.</p><img class="mimg" src="img/reserve.webp?v=1795640900" alt="예약 카드 화면"></div>
+      <div class="step" data-k="4"><span class="n">STEP 05</span><h3>방문하면<br>혜택이 쌓여요</h3><p>MY의 QR을 업체에 보여 주세요. 방문 기록이 쌓이고 단골 혜택·쿠폰을 받을 수 있어요.</p><img class="mimg" src="img/reward.webp?v=1795640900" alt="방문 적립 화면"></div>
     </div>
   </div>
 </section>
@@ -405,10 +409,10 @@ footer nav a:hover{color:var(--text)}
         <p class="glab l"><span class="tri">◀</span><span><b>고객서비스</b><br>앱 이용가이드</span></p>
         <div class="catw" aria-hidden="true">
           <div class="cat3d">
-            <img class="cb" src="img/cat_body.webp?v=1795640623" alt="">
-            <img class="cbl" src="img/cat_blink.webp?v=1795640623" alt="">
+            <img class="cb" src="img/cat_body.webp?v=1795640900" alt="">
+            <img class="cbl" src="img/cat_blink.webp?v=1795640900" alt="">
             <img src="img/cat_footL.webp" alt=""><img src="img/cat_footR.webp" alt="">
-            <img class="ch" src="img/cat_hand.webp?v=1795640623" alt="">
+            <img class="ch" src="img/cat_hand.webp?v=1795640900" alt="">
           </div>
           <div class="shadow"></div>
         </div>
@@ -422,7 +426,7 @@ footer nav a:hover{color:var(--text)}
 <!-- 6. OWNER -->
 <section id="owner">
   <div class="wrap owner">
-    <div class="rv"><div class="phone ophone" style="margin:auto"><div class="scr"><img src="img/owner.webp?v=1795640623" alt="업체 관리 화면"></div></div></div>
+    <div class="rv"><div class="phone ophone" style="margin:auto"><div class="scr"><img src="img/owner.webp?v=1795640900" alt="업체 관리 화면"></div></div></div>
     <div>
       <span class="eyebrow rv">For Owners</span>
       <h2 class="title rv d1 one">업체는 명함, 메뉴판 한 장이면 OK</h2>
@@ -557,8 +561,8 @@ var S=[
 var tabs=document.getElementById('tabs'),scr=document.getElementById('sscr'),info=document.getElementById('sinfo'),th={children:[],appendChild:function(){}},cur=0,timer,DUR=5000;
 S.forEach(function(s,i){
   var b=document.createElement('button');b.textContent=s.t;b.setAttribute('role','tab');b.onclick=function(){go(i,true)};tabs.appendChild(b);
-  var im=document.createElement('img');im.src='img/'+s.img+'.webp?v=1795640623';im.alt=s.h;im.loading=i?'lazy':'eager';if(i)im.className='hide';scr.appendChild(im);
-  if(i<5){var t=document.createElement('img');t.src='img/'+s.img+'.webp?v=1795640623';t.alt='';t.loading='lazy';t.onclick=function(){go(i,true)};th.appendChild(t)}
+  var im=document.createElement('img');im.src='img/'+s.img+'.webp?v=1795640900';im.alt=s.h;im.loading=i?'lazy':'eager';if(i)im.className='hide';scr.appendChild(im);
+  if(i<5){var t=document.createElement('img');t.src='img/'+s.img+'.webp?v=1795640900';t.alt='';t.loading='lazy';t.onclick=function(){go(i,true)};th.appendChild(t)}
 });
 function go(i,user){
   cur=(i+S.length)%S.length;var s=S[cur];
@@ -586,12 +590,19 @@ document.querySelectorAll('.step').forEach(function(s){sio.observe(s)});
 
 // 이용가이드 영상 (영상 파일이 생기면 src에 경로만 넣으면 재생됨)
 var V={
- c:{h:'고객 이용가이드',p:'말로 찾기 · 1:1 번역 상담 · 배달 · 예약',img:'chat',src:''},
- o:{h:'업주 이용가이드',p:'업체 등록 · 지금 상태 · 근처 요청 · 예약·배달 관리',img:'owner',src:''}
+ c:{h:'YAON 소개 영상',p:'한국어 · 40초',src:'video/guide_ko.mp4',poster:'video/guide_ko.jpg',lang:'KO'},
+ o:{h:'Giới thiệu YAON',p:'Tiếng Việt · 40 giây',src:'video/guide_vi.mp4',poster:'video/guide_vi.jpg',lang:'VI'}
 };
-function vshort(v){return '<div class="vshort rv on" role="button" tabindex="0"><div class="pv">'+(v.src?'<video src="'+v.src+'" controls playsinline preload="none" poster="img/'+v.img+'.webp?v=1795640623"></video>':'<img src="img/'+v.img+'.webp?v=1795640623" alt="" loading="lazy"><span class="soon">영상 준비 중</span><div class="play"><span>▶</span></div><div class="cap"><h4>'+v.h+'</h4><p>'+v.p+'</p></div>')+'</div></div>'}
+function vshort(v){return '<div class="vshort rv on"><div class="pv"><video src="'+v.src+'?v=1795641100" poster="'+v.poster+'?v=1795641100" playsinline preload="none"></video><span class="lang">'+v.lang+'</span><button class="play" aria-label="재생"><span>▶</span></button></div><div class="vcap"><h4>'+v.h+'</h4><p>'+v.p+'</p></div></div>'}
 document.getElementById('gl-c').innerHTML=vshort(V.c);
 document.getElementById('gl-o').innerHTML=vshort(V.o);
+document.querySelectorAll('.vshort').forEach(function(w){
+  var vd=w.querySelector('video'),pb=w.querySelector('.play'),cap={style:{}};
+  function start(){document.querySelectorAll('.vshort video').forEach(function(o){if(o!==vd&&!o.paused)o.pause()});vd.controls=true;vd.play();pb.style.display='none';cap.style.opacity=0}
+  pb.onclick=start;
+  vd.addEventListener('pause',function(){if(vd.currentTime===0||vd.ended){pb.style.display='';cap.style.opacity=1;vd.controls=false}});
+  vd.addEventListener('ended',function(){vd.currentTime=0;pb.style.display='';cap.style.opacity=1;vd.controls=false});
+});
 
 // 마지막 다운로드 버튼 = 위쪽 버튼 복사
 document.getElementById('ctaStores').innerHTML=document.querySelector('.hero .stores').innerHTML;
