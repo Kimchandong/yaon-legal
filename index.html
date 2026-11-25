@@ -214,7 +214,7 @@ header.solid{background:rgba(8,8,11,.82);backdrop-filter:blur(14px);-webkit-back
 .vshort .cap{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 16px;background:linear-gradient(transparent,#000d)}
 .vshort h4{font-size:17px;font-weight:800}
 .vshort p{font-size:13px;color:#c9c9d1;margin-top:4px;line-height:1.45}
-.gmid{display:flex;flex-direction:column;align-items:stretch;gap:6px}
+.gmid{display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;gap:6px;align-self:stretch;padding:var(--gpad,40px) 0 calc(var(--gpad,40px) + var(--vcap,0px))}
 .glab{font-size:15px;color:var(--sub);white-space:nowrap;display:flex;align-items:center;gap:8px;line-height:1.35}
 .glab b{color:var(--text);font-weight:800}
 .glab.l{align-self:flex-start}.glab.r{align-self:flex-end}
@@ -596,6 +596,7 @@ var V={
 function vshort(v){return '<div class="vshort rv on"><div class="pv"><video src="'+v.src+'?v=1795641100" poster="'+v.poster+'?v=1795641100" playsinline preload="none"></video><span class="lang">'+v.lang+'</span><button class="play" aria-label="재생"><span>▶</span></button></div><div class="vcap"><h4>'+v.h+'</h4><p>'+v.p+'</p></div></div>'}
 document.getElementById('gl-c').innerHTML=vshort(V.c);
 document.getElementById('gl-o').innerHTML=vshort(V.o);
+(function(){var g=document.querySelector('.gmid'),c=document.querySelector('.vshort .vcap');function f(){if(innerWidth>900&&c){g.style.setProperty('--vcap',(c.offsetHeight+12)+'px')}}f();addEventListener('resize',f);addEventListener('load',f)})();
 document.querySelectorAll('.vshort').forEach(function(w){
   var vd=w.querySelector('video'),pb=w.querySelector('.play'),cap={style:{}};
   function start(){document.querySelectorAll('.vshort video').forEach(function(o){if(o!==vd&&!o.paused)o.pause()});vd.controls=true;vd.play();pb.style.display='none';cap.style.opacity=0}
