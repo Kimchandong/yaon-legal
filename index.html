@@ -66,7 +66,7 @@ header.solid{background:rgba(8,8,11,.82);backdrop-filter:blur(14px);-webkit-back
 .gold{background:linear-gradient(135deg,#f3d27a 0%,#d9ad3c 55%,#e9c463 100%)!important;color:#1a1206!important;border-color:transparent!important;position:relative;isolation:isolate}
 .gold::after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1.6px;background:conic-gradient(from var(--ang),#ffffff00 0deg,#ffffffee 70deg,#ffffff00 140deg,#ffffff55 250deg,#ffffff00 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 2.6s linear infinite;pointer-events:none}
 .hashring{position:absolute!important;z-index:3;width:12.6%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;transition:opacity .4s}
-.hashring::before{padding:2.4px!important;filter:drop-shadow(0 0 6px #3ecbffaa)}
+.hashring::before{padding:2px!important;filter:drop-shadow(0 0 4px #3ecbff99)}
 @media (prefers-reduced-motion:reduce){.btn.spin::before{animation:none}}
 .burger{display:none;width:44px;height:44px;border-radius:12px;background:#ffffff10;border:0;color:var(--text);font-size:20px}
 @media (max-width:900px){
@@ -184,25 +184,27 @@ header.solid{background:rgba(8,8,11,.82);backdrop-filter:blur(14px);-webkit-back
 @media (max-width:900px){.step .say{align-self:center}.how{grid-template-columns:1fr}.how .sticky{display:none}.step{min-height:0;opacity:1;padding:30px 0;text-align:center;align-items:center}.step .mimg{display:block;width:min(260px,70vw);border-radius:28px;margin:24px auto 0;border:1px solid var(--line)}}
 
 /* guide videos */
-.gwrap{display:grid;grid-template-columns:1fr minmax(260px,330px) 1fr;gap:28px;margin-top:44px;align-items:center;text-align:left}
-.glist{display:grid;gap:14px}
-.gcard{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:10px;cursor:pointer;transition:border-color .25s,transform .25s}
-.gcard:hover{border-color:#3a3a46;transform:translateY(-3px)}
-.gcard .th{position:relative;width:74px;aspect-ratio:9/14;border-radius:12px;overflow:hidden;flex:none;background:#000}
-.gcard .th img{width:100%;height:100%;object-fit:cover;object-position:top;opacity:.7}
-.gcard .th i{position:absolute;inset:0;display:grid;place-items:center;font-style:normal;font-size:14px;color:#fff}
-.gcard .th i::before{content:"";position:absolute;width:34px;height:34px;border-radius:50%;background:#ffffff26;backdrop-filter:blur(4px);border:1px solid #ffffff55}
-.gcard .th i span{position:relative}
-.gcard h4{font-size:16px;font-weight:800;margin-bottom:4px}
-.gcard p{font-size:13px;color:var(--sub);line-height:1.45}
-.gcard .soon{display:inline-block;margin-top:6px;font-size:11px;font-weight:800;color:#ff8ac2;border:1px solid #ff4fa366;border-radius:999px;padding:1px 8px}
-#gl-o .gcard{flex-direction:row-reverse;text-align:right}
+.gwrap{display:grid;grid-template-columns:1fr minmax(240px,300px) 1fr;gap:36px;margin:44px auto 0;align-items:center;text-align:left;max-width:980px}
+.glist{display:flex}
+#gl-c{justify-content:flex-end}#gl-o{justify-content:flex-start}
+.vshort{width:min(250px,100%);cursor:pointer}
+.vshort .pv{position:relative;aspect-ratio:9/16;border-radius:24px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 30px 60px -20px #000}
+.vshort .pv img{width:100%;height:100%;object-fit:cover;object-position:top;opacity:.55;transition:opacity .3s,transform .6s}
+.vshort:hover .pv img{opacity:.75;transform:scale(1.03)}
+.vshort .pv video{width:100%;height:100%;object-fit:cover}
+.vshort .play{position:absolute;inset:0;display:grid;place-items:center}
+.vshort .play span{width:64px;height:64px;border-radius:50%;background:#ffffff26;backdrop-filter:blur(6px);border:1px solid #ffffff66;display:grid;place-items:center;font-size:22px;color:#fff}
+.vshort .soon{position:absolute;left:12px;top:12px;font-size:11.5px;font-weight:800;color:#fff;background:#ff4fa3;border-radius:999px;padding:3px 10px}
+.vshort .cap{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 16px;background:linear-gradient(transparent,#000d)}
+.vshort h4{font-size:17px;font-weight:800}
+.vshort p{font-size:13px;color:#c9c9d1;margin-top:4px;line-height:1.45}
 .gmid{display:flex;flex-direction:column;align-items:stretch;gap:6px}
-.glab{font-size:16px;color:var(--sub);white-space:nowrap}
+.glab{font-size:15px;color:var(--sub);white-space:nowrap;display:flex;align-items:center;gap:8px;line-height:1.35}
 .glab b{color:var(--text);font-weight:800}
 .glab.l{align-self:flex-start}.glab.r{align-self:flex-end}
-.glab .tri{color:#d9ad3c;font-size:13px;margin:0 8px}
-.catw{position:relative;width:100%;aspect-ratio:1;margin:auto}
+.glab .tri{color:#d9ad3c;font-size:13px}
+.glab.r{text-align:right}
+.catw{position:relative;width:72%;aspect-ratio:1;margin:4px auto}
 .cat3d{position:absolute;inset:0;animation:catjump 5.2s ease-in-out infinite;transform-origin:50% 92%}
 .cat3d img{position:absolute;inset:0;width:100%;height:100%}
 .cat3d .cbl{opacity:0;animation:blink 4.3s infinite}
@@ -213,7 +215,7 @@ header.solid{background:rgba(8,8,11,.82);backdrop-filter:blur(14px);-webkit-back
 @keyframes catjump{0%,70%,100%{transform:translateY(0) scale(1)}74%{transform:translateY(0) scale(1.04,.95)}82%{transform:translateY(-18%) scale(.98,1.03)}90%{transform:translateY(0) scale(1.04,.96)}94%{transform:translateY(0) scale(1)}}
 @keyframes shadow{0%,74%,100%{transform:scale(1);opacity:.6}82%{transform:scale(.6);opacity:.3}90%{transform:scale(1);opacity:.6}}
 @media (prefers-reduced-motion:reduce){.cat3d,.cat3d .ch,.cat3d .cbl,.catw .shadow{animation:none}}
-@media (max-width:900px){.gwrap{display:flex;flex-direction:column;gap:16px}.gmid{display:contents}.catw{order:0;width:200px}.glab{white-space:normal;align-self:flex-start!important;margin-top:10px}.glab.l{order:1}#gl-c{order:2;width:100%}.glab.r{order:3}#gl-o{order:4;width:100%}.glab.r .tri{display:none}.glab.r::before{content:"◀";color:#d9ad3c;font-size:13px;margin-right:8px}#gl-o .gcard{flex-direction:row;text-align:left}}
+@media (max-width:900px){.gwrap{grid-template-columns:1fr 1fr;gap:16px}.gmid{grid-column:1/-1;order:-1}.glab{white-space:normal}.catw{width:170px}.glist{justify-content:center!important}.vshort{width:100%}}
 
 /* owner */
 .owner{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
@@ -302,7 +304,7 @@ footer nav a:hover{color:var(--text)}
       </div>
     </div>
     <div class="hero-phone rv d2">
-      <div class="phone"><div class="scr"><span class="hashring ring-anim" style="left:59.9%;top:7.8%"></span><img src="img/intro.webp" alt="YAON 시작 화면 — 오늘 밤, 뭐가 당기세요?"></div></div>
+      <div class="phone"><div class="scr"><span class="hashring ring-anim" style="left:59.92%;top:8.74%;width:12.7%"></span><img src="img/intro.webp" alt="YAON 시작 화면 — 오늘 밤, 뭐가 당기세요?"></div></div>
       <div class="chip c1 ring-anim"><span class="dot"></span>근처 3km · 영업 중 12곳</div>
       <div class="chip c2 ring-anim">💬 "근처 가라오케"</div>
     </div>
@@ -361,7 +363,7 @@ footer nav a:hover{color:var(--text)}
     <p class="lead rv d2">스크롤을 내리면 휴대폰 화면이 단계에 맞춰 바뀌어요.</p>
   </div>
   <div class="wrap how">
-    <div class="sticky"><div class="phone"><div class="scr" id="hscr"><span class="hashring ring-anim" id="hring" style="left:61.5%;top:8.7%;width:12%"></span>
+    <div class="sticky"><div class="phone"><div class="scr" id="hscr"><span class="hashring ring-anim" id="hring" style="left:61.5%;top:9.79%;width:13.5%"></span>
       <img src="img/chat.webp" alt="" data-k="0">
       <img src="img/biz.webp" alt="" data-k="1" class="hide">
       <img src="img/consult.webp" alt="" data-k="2" class="hide">
@@ -387,7 +389,7 @@ footer nav a:hover{color:var(--text)}
     <div class="gwrap">
       <div class="glist" id="gl-c"></div>
       <div class="gmid rv">
-        <p class="glab l"><span class="tri">◀</span><b>고객서비스</b> 앱 이용가이드</p>
+        <p class="glab l"><span class="tri">◀</span><span><b>고객서비스</b><br>앱 이용가이드</span></p>
         <div class="catw" aria-hidden="true">
           <div class="cat3d">
             <img class="cb" src="img/cat_body.webp" alt="">
@@ -397,7 +399,7 @@ footer nav a:hover{color:var(--text)}
           </div>
           <div class="shadow"></div>
         </div>
-        <p class="glab r"><b>업주서비스</b> 이용가이드<span class="tri">▶</span></p>
+        <p class="glab r"><span><b>업주서비스</b><br>앱 이용가이드</span><span class="tri">▶</span></p>
       </div>
       <div class="glist" id="gl-o"></div>
     </div>
@@ -549,14 +551,15 @@ function go(i,user){
   cur=(i+S.length)%S.length;var s=S[cur];
   [].forEach.call(tabs.children,function(b,k){b.classList.toggle('on',k===cur);if(k===cur&&user)b.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'})});
   [].forEach.call(scr.querySelectorAll('img'),function(im,k){im.classList.toggle('hide',k!==cur)});
-  if(window.sring)sring.style.opacity=/^(chat|menu|translate)$/.test(s.img)?1:0;
+  var HP={chat:[61.5,9.79],menu:[61.4,9.56],translate:[60.9,9.56]};
+  if(window.sring){var hp=HP[s.img];sring.style.opacity=hp?1:0;if(hp){sring.style.left=hp[0]+'%';sring.style.top=hp[1]+'%'}}
   [].forEach.call(th.children,function(t,k){t.classList.toggle('on',k===cur%5&&cur<5)});
   info.className='info fade';void info.offsetWidth;
   info.innerHTML='<h3>'+s.h+'</h3><p>'+s.p+'</p><ul>'+s.l.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul><div class="arrows"><button aria-label="이전" onclick="go(cur-1,true)">‹</button><button aria-label="다음" onclick="go(cur+1,true)">›</button></div><div class="progress"><i id="pg"></i></div>';
   var pg=document.getElementById('pg');pg.style.transition='none';pg.style.width='0';requestAnimationFrame(function(){requestAnimationFrame(function(){pg.style.transition='width '+DUR+'ms linear';pg.style.width='100%'})});
   clearTimeout(timer);timer=setTimeout(function(){go(cur+1)},DUR);
 }
-window.sring=document.createElement('span');sring.className='hashring ring-anim';sring.style.cssText='left:61.5%;top:8.7%;width:12%';scr.appendChild(sring);
+window.sring=document.createElement('span');sring.className='hashring ring-anim';sring.style.cssText='left:61.5%;top:9.79%;width:13.5%';scr.appendChild(sring);
 go(0);
 // 화면 밖이면 자동 넘김 멈춤
 new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)go(cur);else clearTimeout(timer)})}).observe(document.getElementById('screens'));
@@ -570,12 +573,12 @@ document.querySelectorAll('.step').forEach(function(s){sio.observe(s)});
 
 // 이용가이드 영상 (영상 파일이 생기면 src에 경로만 넣으면 재생됨)
 var V={
- c:[{h:'유흥업종 찾기·상담',p:'말로 찾고 1:1 자동 번역 상담까지',img:'chat',src:''},{h:'배달 주문',p:'메뉴 담기부터 주문 상태 알림까지',img:'menu',src:''},{h:'예약',p:'예약 카드·시간 선택·예약 요청 보내기',img:'reserve',src:''}],
- o:[{h:'유흥업종 업체 관리',p:'등록·지금 상태·근처 요청·손 흔들기',img:'owner',src:''},{h:'배달 관리',p:'메뉴 등록·주문 받기·배달 켜기',img:'biz',src:''},{h:'예약 관리',p:'예약 상품·시간별 가격·예약 확정',img:'event',src:''}]
+ c:{h:'고객 이용가이드',p:'말로 찾기 · 1:1 번역 상담 · 배달 · 예약',img:'chat',src:''},
+ o:{h:'업주 이용가이드',p:'업체 등록 · 지금 상태 · 근처 요청 · 예약·배달 관리',img:'owner',src:''}
 };
-function gcard(v){return '<div class="gcard" role="button" tabindex="0"><div class="th"><img src="img/'+v.img+'.webp" alt="" loading="lazy"><i><span>▶</span></i></div><div><h4>'+v.h+'</h4><p>'+v.p+'</p>'+(v.src?'':'<span class="soon">영상 준비 중</span>')+'</div></div>'}
-document.getElementById('gl-c').innerHTML=V.c.map(gcard).join('');
-document.getElementById('gl-o').innerHTML=V.o.map(gcard).join('');
+function vshort(v){return '<div class="vshort rv on" role="button" tabindex="0"><div class="pv">'+(v.src?'<video src="'+v.src+'" controls playsinline preload="none" poster="img/'+v.img+'.webp"></video>':'<img src="img/'+v.img+'.webp" alt="" loading="lazy"><span class="soon">영상 준비 중</span><div class="play"><span>▶</span></div><div class="cap"><h4>'+v.h+'</h4><p>'+v.p+'</p></div>')+'</div></div>'}
+document.getElementById('gl-c').innerHTML=vshort(V.c);
+document.getElementById('gl-o').innerHTML=vshort(V.o);
 
 // 마지막 다운로드 버튼 = 위쪽 버튼 복사
 document.getElementById('ctaStores').innerHTML=document.querySelector('.hero .stores').innerHTML;
