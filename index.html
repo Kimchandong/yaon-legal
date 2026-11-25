@@ -20,7 +20,7 @@ if(!L){var mob=/Android|iPhone|iPad|iPod|Mobile/i.test(u)||(navigator.maxTouchPo
 window.LANG=L;var h=document.documentElement;h.lang=L;
 var F={th:'Noto+Sans+Thai',lo:'Noto+Sans+Lao',km:'Noto+Sans+Khmer',my:'Noto+Sans+Myanmar'};
 if(F[L])document.write('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family='+F[L]+':wght@300;400;600;800&display=swap">');
-if(L!=='ko'){h.classList.add('i18n-wait');window.I18N=fetch('i18n/'+L+'.json?v=1795644100').then(function(r){return r.json()}).catch(function(){return {}})}else window.I18N=Promise.resolve({});
+if(L!=='ko'){h.classList.add('i18n-wait');window.I18N=fetch('i18n/'+L+'.json?v=1795644400').then(function(r){return r.json()}).catch(function(){return {}})}else window.I18N=Promise.resolve({});
 })();
 </script>
 
@@ -319,11 +319,11 @@ html:not([lang=ko]) .glab{white-space:normal}
   <div class="wrap nav">
     <a href="#home" class="logo" aria-label="YAON 처음으로">YAON<sup>夜</sup></a>
     <nav class="menu" id="menu">
-      <a href="#screens">앱 화면</a>
-      <a href="#features">서비스</a>
-      <a href="#how">이용 방법</a>
-      <a href="#guide">이용가이드 영상</a>
-      <a href="#owner">업주</a>
+      <a href="#home">HOME</a>
+      <a href="#screens">앱서비스</a>
+      <a href="#how">이용방법</a>
+      <a href="#guide">가이드영상</a>
+      <a href="#owner">업체등록</a>
       <a href="#faq">FAQ</a>
     </nav>
     <div class="lang" id="lang"><button class="langbtn" id="langbtn" aria-label="언어" aria-haspopup="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 2.8 2.8 15.2 0 18M12 3c-2.8 2.8-2.8 15.2 0 18"/></svg><span class="ln" id="langname">한국어</span><span class="lc" id="langcode"></span></button><div class="langmenu" id="langmenu" role="menu"></div></div>
@@ -559,7 +559,7 @@ html:not([lang=ko]) .glab{white-space:normal}
 </script>
 <script type="text/plain" id="mainjs">
 var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){document.querySelectorAll('.menu a').forEach(function(l){l.classList.toggle('act',l.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});
-['screens','features','how','guide','owner','faq'].forEach(function(id){io2.observe(document.getElementById(id))});
+['home','screens','how','guide','owner','faq'].forEach(function(id){io2.observe(document.getElementById(id))});
 
 // 스크롤하면 나타나기
 var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');rio.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
