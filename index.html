@@ -10,6 +10,20 @@
 <meta property="og:image" content="https://yaon-app.com/img/icon.png?v=1795640900">
 <meta property="og:url" content="https://yaon-app.com/">
 <meta name="theme-color" content="#08080b">
+<script>
+(function(){var S=['ko','en','ja','vi','th','zh','ms','lo','my','mn','fil','id','km'],L=null,u=navigator.userAgent;
+try{var q=new URLSearchParams(location.search).get('lang');if(q&&S.indexOf(q)>-1){L=q;localStorage.setItem('yaon_lang',q)}else{var s=localStorage.getItem('yaon_lang');if(S.indexOf(s)>-1)L=s}}catch(e){}
+if(!L){var mob=/Android|iPhone|iPad|iPod|Mobile/i.test(u)||(navigator.maxTouchPoints>1&&/Macintosh/.test(u));
+ if(mob){var ls=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||''];
+  for(var i=0;i<ls.length&&!L;i++){var b=String(ls[i]).toLowerCase().split('-')[0];if(b==='tl')b='fil';if(b==='in')b='id';if(S.indexOf(b)>-1)L=b}
+  if(!L)L='en'}else L='ko'}
+window.LANG=L;var h=document.documentElement;h.lang=L;
+var F={th:'Noto+Sans+Thai',lo:'Noto+Sans+Lao',km:'Noto+Sans+Khmer',my:'Noto+Sans+Myanmar'};
+if(F[L])document.write('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family='+F[L]+':wght@300;400;600;800&display=swap">');
+if(L!=='ko'){h.classList.add('i18n-wait');window.I18N=fetch('i18n/'+L+'.json?v=1795642000').then(function(r){return r.json()}).catch(function(){return {}})}else window.I18N=Promise.resolve({});
+})();
+</script>
+
 <link rel="icon" href="img/favicon.png?v=1795640900">
 <link rel="apple-touch-icon" href="img/icon.png?v=1795640900">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
@@ -26,7 +40,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:76px}
-body{background:var(--bg);color:var(--text);font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Noto Sans Thai","Noto Sans Lao","Noto Sans Khmer","Noto Sans Myanmar",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 .wrap{width:min(var(--max),100% - 40px);margin-inline:auto}
@@ -275,6 +289,23 @@ footer nav{display:flex;gap:18px;flex-wrap:wrap}
 footer nav a:hover{color:var(--text)}
 .topbtn{position:fixed;right:18px;bottom:18px;width:48px;height:48px;border-radius:50%;background:var(--goldg);color:#1a1206;font-size:20px;font-weight:900;display:grid;place-items:center;opacity:0;pointer-events:none;transition:.3s;z-index:40;border:0;cursor:pointer}
 .topbtn.on{opacity:1;pointer-events:auto}
+
+html.i18n-wait body{opacity:0}
+body{transition:opacity .25s}
+html:not([lang=ko]) .hero p.lead.hl span{white-space:normal}
+html:not([lang=ko]) h2.title.one{white-space:normal}
+html:not([lang=ko]) .glab{white-space:normal}
+.lang{position:relative;margin-right:10px}
+.langbtn{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:#ffffff08;color:var(--sub);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.langbtn:hover{color:var(--text)}
+.langbtn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.7}
+.langmenu{position:absolute;right:0;top:48px;min-width:200px;max-height:70vh;overflow:auto;background:rgba(16,16,21,.97);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:16px;padding:6px;display:none;z-index:60;box-shadow:0 24px 50px -10px #000}
+.langmenu.open{display:block}
+.langmenu a{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:10px;font-size:14.5px;color:var(--sub)}
+.langmenu a:hover{background:#ffffff10;color:var(--text)}
+.langmenu a.on{color:#1a1206;background:linear-gradient(135deg,#f3d27a,#d9ad3c)}
+.langmenu a small{opacity:.6;font-size:12px}
+@media (max-width:900px){.lang{margin-left:auto;margin-right:8px}.langbtn{height:44px;padding:0 12px}.langbtn .ln{display:none}}
 </style>
 </head>
 <body>
@@ -290,6 +321,7 @@ footer nav a:hover{color:var(--text)}
       <a href="#owner">업주</a>
       <a href="#faq">FAQ</a>
     </nav>
+    <div class="lang" id="lang"><button class="langbtn" id="langbtn" aria-label="언어" aria-haspopup="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 2.8 2.8 15.2 0 18M12 3c-2.8 2.8-2.8 15.2 0 18"/></svg><span class="ln" id="langname">한국어</span><span class="lc" id="langcode"></span></button><div class="langmenu" id="langmenu" role="menu"></div></div>
     <a href="#download" class="btn dl">앱 다운로드</a>
     <button class="burger" id="burger" aria-label="메뉴 열기">☰</button>
   </div>
@@ -519,7 +551,7 @@ footer nav a:hover{color:var(--text)}
   window.STORE=STORE;
 })();
 </script>
-<script>
+<script type="text/plain" id="mainjs">
 var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){document.querySelectorAll('.menu a').forEach(function(l){l.classList.toggle('act',l.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});
 ['screens','features','how','guide','owner','faq'].forEach(function(id){io2.observe(document.getElementById(id))});
 
@@ -562,11 +594,12 @@ var S=[
  {t:'방문 적립',img:'reward',h:'내 QR로 방문 적립',p:'MY의 QR을 업체에 보여 주면 방문이 쌓이고 단골 혜택을 받아요.',l:['7초마다 바뀌는 QR','방문·혜택 기록','쿠폰']},
  {t:'업체 관리',img:'owner',h:'업주용 관리창',p:'통계, 지금 상태, 근처 고객 요청, 이벤트 푸시, 홍보 거리까지 한 화면에서 관리해요.',l:['오늘 노출·방문·상담','여유·대기·만석','홍보 거리 1~50km·전 지역']}
 ];
+S.forEach(function(s){s.t=T(s.t);s.h=T(s.h);s.p=T(s.p);s.l=s.l.map(T)});
 var tabs=document.getElementById('tabs'),scr=document.getElementById('sscr'),info=document.getElementById('sinfo'),th={children:[],appendChild:function(){}},cur=0,timer,DUR=5000;
 S.forEach(function(s,i){
   var b=document.createElement('button');b.textContent=s.t;b.setAttribute('role','tab');b.onclick=function(){go(i,true)};tabs.appendChild(b);
-  var im=document.createElement('img');im.src='img/'+s.img+'.webp?v=1795640900';im.alt=s.h;im.loading=i?'lazy':'eager';if(i)im.className='hide';scr.appendChild(im);
-  if(i<5){var t=document.createElement('img');t.src='img/'+s.img+'.webp?v=1795640900';t.alt='';t.loading='lazy';t.onclick=function(){go(i,true)};th.appendChild(t)}
+  var im=document.createElement('img');im.src=IMG(s.img);im.alt=s.h;im.loading=i?'lazy':'eager';if(i)im.className='hide';scr.appendChild(im);
+  if(i<5){var t=document.createElement('img');t.src=IMG(s.img);t.alt='';t.loading='lazy';t.onclick=function(){go(i,true)};th.appendChild(t)}
 });
 function go(i,user){
   cur=(i+S.length)%S.length;var s=S[cur];
@@ -576,7 +609,7 @@ function go(i,user){
   if(window.sring){var hp=HP[s.img];sring.style.opacity=hp?1:0;if(hp){sring.style.left=hp[0]+'%';sring.style.top=hp[1]+'%'}}
   [].forEach.call(th.children,function(t,k){t.classList.toggle('on',k===cur%5&&cur<5)});
   info.className='info fade';void info.offsetWidth;
-  info.innerHTML='<h3>'+s.h+'</h3><p>'+s.p+'</p><ul>'+s.l.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul><div class="arrows"><button aria-label="이전" onclick="go(cur-1,true)">‹</button><button aria-label="다음" onclick="go(cur+1,true)">›</button></div><div class="progress"><i id="pg"></i></div>';
+  info.innerHTML='<h3>'+s.h+'</h3><p>'+s.p+'</p><ul>'+s.l.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul><div class="arrows"><button aria-label="'+T('이전')+'" onclick="go(cur-1,true)">‹</button><button aria-label="'+T('다음')+'" onclick="go(cur+1,true)">›</button></div><div class="progress"><i id="pg"></i></div>';
   var pg=document.getElementById('pg');pg.style.transition='none';pg.style.width='0';requestAnimationFrame(function(){requestAnimationFrame(function(){pg.style.transition='width '+DUR+'ms linear';pg.style.width='100%'})});
   clearTimeout(timer);timer=setTimeout(function(){go(cur+1)},DUR);
 }
@@ -594,7 +627,7 @@ document.querySelectorAll('.step').forEach(function(s){sio.observe(s)});
 
 // 이용가이드 영상 (영상 파일이 생기면 src에 경로만 넣으면 재생됨)
 var V={
- c:{h:'YAON 소개 영상',p:'한국어 · 40초',src:'video/guide_ko.mp4',poster:'video/guide_ko.jpg',lang:'KO'},
+ c:{h:T('YAON 소개 영상'),p:T('한국어 · 40초'),src:'video/guide_ko.mp4',poster:'video/guide_ko.jpg',lang:'KO'},
  o:{h:'Giới thiệu YAON',p:'Tiếng Việt · 40 giây',src:'video/guide_vi.mp4',poster:'video/guide_vi.jpg',lang:'VI'}
 };
 function vshort(v){return '<div class="vshort rv on" data-src="'+v.src+'?v=1795641100" data-poster="'+v.poster+'?v=1795641100"><div class="pv"><video src="'+v.src+'?v=1795641100" poster="'+v.poster+'?v=1795641100" playsinline preload="none"></video><span class="lang">'+v.lang+'</span><button class="play" aria-label="재생"><span>▶</span></button></div><div class="vcap"><h4>'+v.h+'</h4><p>'+v.p+'</p></div></div>'}
@@ -621,5 +654,33 @@ document.querySelectorAll('.vshort').forEach(function(w){
 document.getElementById('ctaStores').innerHTML=document.querySelector('.hero .stores').innerHTML;
 document.querySelectorAll('.store').forEach(function(a){var u=a.getAttribute('aria-label')==='App Store'?STORE.ios:STORE.android;if(u){a.href=u;a.target='_blank';a.rel='noopener';var em=a.querySelector('em');em&&em.remove()}});
 </script>
+<script>
+(function(){
+var L=window.LANG,NAMES=[['ko','한국어','Korean'],['en','English','English'],['ja','日本語','Japanese'],['zh','中文','Chinese'],['vi','Tiếng Việt','Vietnamese'],['th','ไทย','Thai'],['ms','Bahasa Melayu','Malay'],['id','Bahasa Indonesia','Indonesian'],['fil','Filipino','Filipino'],['lo','ລາວ','Lao'],['km','ខ្មែរ','Khmer'],['my','မြန်မာ','Burmese'],['mn','Монгол','Mongolian']];
+var CL={ko:'',en:'en/',ja:'ja/',th:'th/',vi:'vi/'};var cl=(L in CL)?CL[L]:'en/';var LOC=['chat','menu','consult','reward','owner','event'];
+window.IMG=function(k){return 'img/'+(cl&&LOC.indexOf(k)>-1?cl:'')+k+'.webp?v=1795642000'};
+var mn=document.getElementById('langmenu');
+NAMES.forEach(function(n){var a=document.createElement('a');a.href='?lang='+n[0];a.setAttribute('role','menuitem');a.innerHTML='<span>'+n[1]+'</span><small>'+n[2]+'</small>';if(n[0]===L)a.className='on';a.onclick=function(e){e.preventDefault();try{localStorage.setItem('yaon_lang',n[0])}catch(_){ }location.href=location.pathname+'?lang='+n[0]};mn.appendChild(a);if(n[0]===L){document.getElementById('langname').textContent=n[1];document.getElementById('langcode').textContent=n[0].toUpperCase()}});
+document.getElementById('langbtn').onclick=function(e){e.stopPropagation();mn.classList.toggle('open')};
+document.addEventListener('click',function(){mn.classList.remove('open')});
+var lf={en:'en',vi:'vi',th:'th',ja:'ja',ko:'ko'}[L]||'en';
+document.querySelectorAll('a[href^="ko/"]').forEach(function(a){a.setAttribute('href',a.getAttribute('href').replace(/^ko\//,lf+'/'))});
+window.I18N.then(function(D){
+  window.DICT=D||{};var has=function(k){return Object.prototype.hasOwnProperty.call(window.DICT,k)};
+  window.T=function(k){return has(k)?window.DICT[k]:k};
+  if(L!=='ko'){
+    var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(n){var p=n.parentNode&&n.parentNode.nodeName;return (p==='SCRIPT'||p==='STYLE')?2:1}});var n;
+    while(n=w.nextNode()){var v=n.nodeValue,t=v.trim();if(t&&has(t))n.nodeValue=v.replace(t,window.DICT[t])}
+    document.querySelectorAll('[alt],[aria-label],[data-v]').forEach(function(e){['alt','aria-label','data-v'].forEach(function(a){var v=e.getAttribute(a);if(v&&has(v))e.setAttribute(a,window.DICT[v])})});
+    document.title=T(document.title.replace(/^\s+|\s+$/g,''));var md=document.querySelector('meta[name=description]');if(md)md.content=T(md.content);
+    document.querySelectorAll('img[src*="img/"]').forEach(function(im){var m=im.getAttribute('src').match(/img\/([a-z_]+)\.webp/);if(m&&LOC.indexOf(m[1])>-1&&cl)im.src=IMG(m[1])});
+  }
+  (0,eval)(document.getElementById('mainjs').textContent);
+  document.documentElement.classList.remove('i18n-wait');
+});
+setTimeout(function(){document.documentElement.classList.remove('i18n-wait')},2500);
+})();
+</script>
+
 </body>
 </html>
