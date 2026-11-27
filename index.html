@@ -20,7 +20,7 @@ if(!L){var mob=/Android|iPhone|iPad|iPod|Mobile/i.test(u)||(navigator.maxTouchPo
 window.LANG=L;var h=document.documentElement;h.lang=L;
 var F={th:'Noto+Sans+Thai',lo:'Noto+Sans+Lao',km:'Noto+Sans+Khmer',my:'Noto+Sans+Myanmar'};
 if(F[L])document.write('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family='+F[L]+':wght@300;400;600;800&display=swap">');
-if(L!=='ko'){h.classList.add('i18n-wait');window.I18N=fetch('i18n/'+L+'.json?v=1795645900').then(function(r){return r.json()}).catch(function(){return {}})}else window.I18N=Promise.resolve({});
+if(L!=='ko'){h.classList.add('i18n-wait');window.I18N=fetch('i18n/'+L+'.json?v=1795768000').then(function(r){return r.json()}).catch(function(){return {}})}else window.I18N=Promise.resolve({});
 })();
 </script>
 
@@ -633,11 +633,12 @@ var sio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInte
 document.querySelectorAll('.step').forEach(function(s){sio.observe(s)});
 
 // 이용가이드 영상 (영상 파일이 생기면 src에 경로만 넣으면 재생됨)
+var _gv=window.LANG==='vi'?'vi':'ko',_gp=_gv==='vi'?'Tiếng Việt · 40 giây':T('한국어 · 40초'),_gl=_gv.toUpperCase();
 var V={
- c:{h:T('YAON 소개 영상'),p:T('한국어 · 40초'),src:'video/guide_ko.mp4',poster:'video/guide_ko.jpg',lang:'KO'},
- o:{h:'Giới thiệu YAON',p:'Tiếng Việt · 40 giây',src:'video/guide_vi.mp4',poster:'video/guide_vi.jpg',lang:'VI'}
+ c:{h:T('고객 이용가이드'),p:_gp,src:'video/guide_customer_'+_gv+'.mp4',poster:'video/guide_customer_'+_gv+'.jpg',lang:_gl},
+ o:{h:T('업주 이용가이드'),p:_gp,src:'video/guide_owner_'+_gv+'.mp4',poster:'video/guide_owner_'+_gv+'.jpg',lang:_gl}
 };
-function vshort(v){return '<div class="vshort rv on" data-src="'+v.src+'?v=1795641100" data-poster="'+v.poster+'?v=1795641100"><div class="pv"><video src="'+v.src+'?v=1795641100" poster="'+v.poster+'?v=1795641100" playsinline preload="none"></video><span class="lang">'+v.lang+'</span><button class="play" aria-label="재생"><span>▶</span></button></div><div class="vcap"><h4>'+v.h+'</h4><p>'+v.p+'</p></div></div>'}
+function vshort(v){return '<div class="vshort rv on" data-src="'+v.src+'?v=1795768000" data-poster="'+v.poster+'?v=1795768000"><div class="pv"><video src="'+v.src+'?v=1795768000" poster="'+v.poster+'?v=1795768000" playsinline preload="none"></video><span class="lang">'+v.lang+'</span><button class="play" aria-label="재생"><span>▶</span></button></div><div class="vcap"><h4>'+v.h+'</h4><p>'+v.p+'</p></div></div>'}
 document.getElementById('gl-c').innerHTML=vshort(V.c);
 document.getElementById('gl-o').innerHTML=vshort(V.o);
 (function(){var g=document.querySelector('.gmid'),c=document.querySelector('.vshort .vcap');function f(){if(innerWidth>900&&c){g.style.setProperty('--vcap',(c.offsetHeight+12)+'px')}}f();addEventListener('resize',f);addEventListener('load',f)})();

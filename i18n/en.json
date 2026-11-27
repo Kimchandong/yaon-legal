@@ -211,5 +211,7 @@
 "\"쌀국수 배달 시켜줘\"처럼 말하면 내 위치로 배달되는 음식점과 메뉴를 보여 줘요. 담아서 주문하면 주문 상태를 바로 알려 드려요.": "Say something like \"Get me pho delivered\" and see restaurants that deliver to you, with their menus. Add items, order, and get status updates right away.",
 "메뉴 담기·수량 조절": "Add menu items and adjust quantity",
 "접수·조리 중·배달 중·완료 알림": "Alerts: received, cooking, on the way, delivered",
-"배달되는 메뉴는 \"배달\" 표시": "\"Delivery\" tag on deliverable items"
+"배달되는 메뉴는 \"배달\" 표시": "\"Delivery\" tag on deliverable items",
+"고객 이용가이드": "Customer guide",
+"업주 이용가이드": "Owner guide"
 }

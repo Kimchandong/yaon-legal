@@ -211,5 +211,7 @@
 "\"쌀국수 배달 시켜줘\"처럼 말하면 내 위치로 배달되는 음식점과 메뉴를 보여 줘요. 담아서 주문하면 주문 상태를 바로 알려 드려요.": "Sebut seperti \"Pesan pho untuk dihantar\" dan lihat restoran yang menghantar ke lokasi anda beserta menu. Tambah, pesan, dan terima status pesanan serta-merta.",
 "메뉴 담기·수량 조절": "Tambah menu, ubah kuantiti",
 "접수·조리 중·배달 중·완료 알림": "Makluman: diterima, dimasak, dalam perjalanan, selesai",
-"배달되는 메뉴는 \"배달\" 표시": "Label \"Penghantaran\" pada menu yang boleh dihantar"
+"배달되는 메뉴는 \"배달\" 표시": "Label \"Penghantaran\" pada menu yang boleh dihantar",
+"고객 이용가이드": "Panduan pelanggan",
+"업주 이용가이드": "Panduan pemilik kedai"
 }
