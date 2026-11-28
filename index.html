@@ -545,8 +545,9 @@ html:not([lang=ko]) .glab{white-space:normal}
 (function(){
   // 출시되면 여기 두 주소만 넣으면 버튼이 실제 스토어로 연결됨
   // S-iOS (2026-11-29) App Store 출시 — 나라 코드 없는 주소는 PC에서 미국 스토어로 열려 "찾을 수 없음" → 언어별 나라 코드 (그 밖 = vn)
-  var CC = { ko: 'kr', vi: 'vn', ja: 'jp', th: 'th', lo: 'la', km: 'kh' };
-  var STORE = { ios: 'https://apps.apple.com/' + (CC[window.LANG] || 'vn') + '/app/id6837698293', android: '' };
+  // S-iOS2 (2026-11-29) 최종 주소(이름 포함) 그대로 — 짧은 주소는 PC에서 이름 주소로 넘어갈 때 "오류가 발생했습니다" · 그 밖 언어 = VN · US 판매 안 함
+  var IOS = { ko: 'https://apps.apple.com/kr/app/%EC%95%BC%EC%98%A8-yaon-%ED%95%B4%EC%99%B8-%EB%82%98%EC%9D%B4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84-%EB%8C%80%ED%99%94/id6837698293', ja: 'https://apps.apple.com/jp/app/%EC%95%BC%EC%98%A8-yaon-%ED%95%B4%EC%99%B8-%EB%82%98%EC%9D%B4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84-%EB%8C%80%ED%99%94/id6837698293', vi: 'https://apps.apple.com/vn/app/yaon-nightlife-chat-guide/id6837698293', th: 'https://apps.apple.com/th/app/yaon-nightlife-chat-guide/id6837698293', lo: 'https://apps.apple.com/la/app/yaon-nightlife-chat-guide/id6837698293', km: 'https://apps.apple.com/kh/app/yaon-nightlife-chat-guide/id6837698293' };
+  var STORE = { ios: IOS[window.LANG] || IOS.vi, android: '' };
 
   var hd=document.getElementById('hd'), top=document.getElementById('top');
   function onScroll(){var y=scrollY;hd.classList.toggle('solid',y>20);top.classList.toggle('on',y>900)}
