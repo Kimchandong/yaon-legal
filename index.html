@@ -20,7 +20,7 @@ if(!L){var mob=/Android|iPhone|iPad|iPod|Mobile/i.test(u)||(navigator.maxTouchPo
 window.LANG=L;var h=document.documentElement;h.lang=L;
 var F={th:'Noto+Sans+Thai',lo:'Noto+Sans+Lao',km:'Noto+Sans+Khmer',my:'Noto+Sans+Myanmar'};
 if(F[L])document.write('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family='+F[L]+':wght@300;400;600;800&display=swap">');
-if(L!=='ko'){h.classList.add('i18n-wait');window.I18N=fetch('i18n/'+L+'.json?v=1795768000').then(function(r){return r.json()}).catch(function(){return {}})}else window.I18N=Promise.resolve({});
+if(L!=='ko'){h.classList.add('i18n-wait');window.I18N=fetch('i18n/'+L+'.json?v=1795800000').then(function(r){return r.json()}).catch(function(){return {}})}else window.I18N=Promise.resolve({});
 })();
 </script>
 
@@ -519,7 +519,7 @@ html:not([lang=ko]) .glab{white-space:normal}
     <div class="cta rv">
       <span class="eyebrow">Download</span>
       <h2 style="margin:16px 0 14px">오늘 밤 계획,<br>YAON에게 물어보세요</h2>
-      <p class="lead" style="margin:0 auto">App Store·Google Play 출시를 준비하고 있어요. 출시되면 이 버튼에서 바로 받을 수 있어요.</p>
+      <p class="lead" style="margin:0 auto">App Store에서 지금 받을 수 있어요. Google Play는 곧 출시돼요.</p>
       <div class="stores" id="ctaStores"></div>
     </div>
   </div>
@@ -544,7 +544,9 @@ html:not([lang=ko]) .glab{white-space:normal}
 <script>
 (function(){
   // 출시되면 여기 두 주소만 넣으면 버튼이 실제 스토어로 연결됨
-  var STORE = { ios: 'https://apps.apple.com/app/id6837698293', android: '' };
+  // S-iOS (2026-11-29) App Store 출시 — 나라 코드 없는 주소는 PC에서 미국 스토어로 열려 "찾을 수 없음" → 언어별 나라 코드 (그 밖 = vn)
+  var CC = { ko: 'kr', vi: 'vn', ja: 'jp', th: 'th', lo: 'la', km: 'kh' };
+  var STORE = { ios: 'https://apps.apple.com/' + (CC[window.LANG] || 'vn') + '/app/id6837698293', android: '' };
 
   var hd=document.getElementById('hd'), top=document.getElementById('top');
   function onScroll(){var y=scrollY;hd.classList.toggle('solid',y>20);top.classList.toggle('on',y>900)}

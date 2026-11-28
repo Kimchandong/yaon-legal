@@ -21,6 +21,7 @@
 <div class="code" id="code"></div>
 <p><a class="btn" id="open" href="#"></a></p>
 <p class="muted" id="how"></p>
+<p id="storeWrap" hidden><a class="btn" id="store" target="_blank" rel="noopener"></a></p>
 <p class="muted" id="note"></p>
 </main>
 <footer>YAON · <a href="mailto:yaon.support@gmail.com">yaon.support@gmail.com</a></footer>
@@ -33,6 +34,9 @@
     th: ['เพื่อนชวนคุณมาใช้ YAON', 'เปิดในแอป', 'ถ้าแอปไม่เปิด ให้ติดตั้ง YAON แล้วใส่รหัสด้านบนที่ MY → QR → [ใส่รหัสเพื่อน]', 'รหัสใช้ได้ครั้งเดียวภายใน 24 ชั่วโมง', 'ไม่มีรหัสเชิญหรือรหัสไม่ถูกต้อง'],
     ja: ['友達からYAONに招待されました', 'アプリで開く', 'アプリが開かない場合は、YAONをインストールしてから MY → QR → [友達コード入力] に上のコードを入れてください。', 'コードは24時間以内に1回だけ使えます。', '招待コードがないか、正しくありません。']
   };
+  // S-iOS (2026-11-29) [App Store] 버튼 글자 · 주소 나라 코드(없으면 PC에서 미국 스토어 "찾을 수 없음") — 그 밖 언어 = vn
+  var STORE_T = { ko: 'App Store에서 받기', en: 'Download on the App Store', vi: 'Tải trên App Store', th: 'ดาวน์โหลดบน App Store', ja: 'App Storeでダウンロード' };
+  var CC = { ko: 'kr', vi: 'vn', ja: 'jp', th: 'th', lo: 'la', km: 'kh' };
   var lang = (navigator.language || 'ko').slice(0, 2).toLowerCase();
   var s = T[lang] || T.en;
   document.documentElement.lang = T[lang] ? lang : 'en';
@@ -49,6 +53,10 @@
     open.href = url;
     document.getElementById('how').textContent = s[2];
     document.getElementById('note').textContent = s[3];
+    var st = document.getElementById('store');
+    st.href = 'https://apps.apple.com/' + (CC[lang] || 'vn') + '/app/id6837698293';
+    st.textContent = STORE_T[lang] || STORE_T.en;
+    document.getElementById('storeWrap').hidden = false;
     setTimeout(function () { location.href = url; }, 300);
   } else {
     open.style.display = 'none';

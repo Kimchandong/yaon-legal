@@ -3156,7 +3156,9 @@ function openText(raw, todayRange, h24) {
     st = st || {};
     var ios = $('ios'), and = $('android');
     if (st.ios) {
-      ios.href = st.ios;
+      // S-iOS (2026-11-29) 서버 주소(app_settings.store_url_ios)의 나라 코드만 언어에 맞게 — 그 밖 = vn
+      var CC = { ko: 'kr', vi: 'vn', ja: 'jp', th: 'th', lo: 'la', km: 'kh' };
+      ios.href = st.ios.replace(/^(https:\/\/apps\.apple\.com\/)(?:[a-z]{2}\/)?/, '$1' + (CC[lang] || 'vn') + '/');
       // #26 iOS: 설치 후 첫 실행에서 "방금 본 ○○ 열까요?" 확인용
       ios.onclick = function () { try { if (token && navigator.clipboard) navigator.clipboard.writeText('YAON-CARD:' + token); } catch (e) {} };
     }
